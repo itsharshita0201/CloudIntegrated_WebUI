@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+    <style>
+    body{
+        background-color: #f1faee;
+        text-align: center;
+
+    }
+    .left-panel {
+        width: 250px;
+        height: 100vh;
+        background-color: #a8dadc;
+        float: left;
+        padding: 20px;
+        transition: width 0.3s;
+    }
+
+    .left-panel a {
+        display: block;
+        color: #1d3557;
+        font-size: 1.7rem;
+        margin-bottom: 10px;
+        text-decoration: none;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+     a:hover {
+        background-color: #f1faee;
+    }
+    h2{
+        font-size: 2rem;
+    }
+    #Basics form {
+        font-size:1.5rem;
+        color:#1d3557;
+        font-weight: 550;
+    }
+    #Basics form input {
+        width:300px;
+        height: 40px;
+        border:2px solid #a8dadc ;
+        font-size:1.2rem ;
+        color: #1d3557;
+        }
+    #Basics form input:hover{
+        border:2px solid #457b9d;
+    }
+    #AWS #fname{
+        font-size: 1.5rem;
+    }
+
+    #AWS label{
+        font-size: 1.2rem;
+    }
+
+    #AWS #Sumbit-button{
+        width:120px;
+        height:40px;
+        color:#f1faee;
+        border:2px solid #1d3557;
+        border-radius:6% ;
+        background-color: #e63946;
+        font-size: 1.2rem;
+
+    }
+   #Docker input{
+        font-size: 1.2rem;
+    }
+   #Docker form{
+        font-size: 1.2rem;
+    }
+    #Docker button{
+        width:120px;
+        height:40px;
+        color:#f1faee;
+        border:2px solid #1d3557;
+        border-radius:6% ;
+        background-color: #e63946;
+        font-size: 1.2rem;
+
+    }
+
+    #Linux label{
+            margin-top:20px;
+        font-size: 1.2rem;
+    }
+    #Linux input{
+            margin-top:20px;
+        font-size: 1.2rem;
+    }
+   #Linux #dish-button{
+        width:200px;
+        height:40px;
+        color:#f1faee;
+        border:2px solid #1d3557;
+        border-radius:6% ;
+        background-color: #e63946;
+        font-size: 1.2rem;
+
+    }
+  #Linux #option{
+        width:120px;
+        height:40px;
+        color:#f1faee;
+        border:2px solid #1d3557;
+        border-radius:6% ;
+
+        font-size: 1.2rem;
+
+    }
+</style>
+
+
+</head>
+<body>
+
+    <div class="left-panel">
+        <ul>
+            <li><a href="#Team">Team</a></li>
+            <li><a href="#Basics">Linux</a></li>
+            <li><a href="#AWS">AWS</a></li>
+            <li><a href="#Docker">Docker</a></li>
+            <li><a href="#Linux">Dish Project</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div id="Team">
+            <h2>Tech Buddies</h2>
+        </div>
+        <div id="Basics">
+            <h2>Basics</h2>
+            <p>Welcome to the command Prompt</p>
+            <form action="http://3.110.86.89/cgi-bin/basics.py?x=" >
+                Enter Command:<input name="x"/>
+
+            </form>
+        </div>
+        <div id="AWS" style="display: none;">
+            <h1>AWS</h1>
+ <p>AWS services....</p>
+           <h2>Launch EC2 Instance</h2>
+
+<form action="http://3.110.86.89/cgi-bin/project.py">
+
+  <label for="fname"> ImageId: </label>
+  <input type="text" id="fname" name="img"><br><br>
+  <label for="fname"> InstanceType: </label>
+  <input type="text" id="fname" name="instance"><br><br>
+  <label for="fname">MaxCount: </label>
+  <input type="text" id="fname" name="max"><br><br>
+  <label for="fname">MinCount: </label>
+  <input type="text" id="fname" name="min"><br><br>
+  <input type="submit" id="Sumbit-button" value="Launch">
+</form>
+        </div>
+<div id="Docker" style="display: none;">
+            <h2>Docker</h2>
+            <form action="http://3.110.86.89/cgi-bin/docker.py">
+            Input: <input name="n" />
+                <br><br>
+                  <button>click me</button>
+
+              </form>
+        </div>
+        <div id="Linux" style="display: none;">
+
+             <h1>Dish Recommendation System</h1>
+    <form action="http://3.110.86.89/cgi-bin/dish.py" method="post">
+        <label for="cuisine">Select Cuisine:</label>
+        <select name="cuisine" id="cuisine">
+            <option value="italian">Italian</option>
+            <option value="indian">Indian</option>
+            <option value="chinese">Chinese</option>
+            <!-- Add more cuisine options here -->
+        </select>
+<br>
+        <label for="spicy">Spicy Level:</label>
+        <input type="radio" name="spicy" value="mild">Mild
+        <input type="radio" name="spicy" value="medium">Medium
+        <input type="radio" name="spicy" value="hot">Hot
+        <br>
+        <input type="submit"id = "dish-button" value="Get Recommendation">
+    </form>
+    <div id="recommendation">
+        <!-- Display recommendation here -->
+    </div>
+
+        </div>
+
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+                var links = document.querySelectorAll('.left-panel a');
+                var contentDivs = document.querySelectorAll('.content > div');
+    
+                for (var i = 0; i < links.length; i++) {
+                    links[i].addEventListener('click', function(e) {
+                        e.preventDefault();
+                        var target = this.getAttribute('href').substring(1);
+                        
+                        for (var j = 0; j < contentDivs.length; j++) {
+                            contentDivs[j].style.display = 'none';
+                        }
+                        
+                        document.getElementById(target).style.display = 'block';
+                    });
+                }
+            });
+        
+</script>
+
+
+</html> 
+
